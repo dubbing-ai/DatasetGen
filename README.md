@@ -32,6 +32,28 @@ Where:
 - YYY: Number of sentences in file
 - Optional suffix indicates the model used
 
+### Data Format
+
+The generated CSV files contain two columns:
+
+1. Thai sentence
+2. English sentence translation
+
+Example content:
+
+```csv
+"วันนี้อากาศดีมาก ฉันคิดว่าเราควรออกไปเดินเล่นที่สวนสาธารณะด้วยกันไหม","The weather is very nice today; do you think we should go for a walk in the park together?"
+"แม้ว่าฝนจะตกหนัก แต่ฉันก็ยังต้องไปทำงานเพราะมีการประชุมสำคัญที่ต้องเข้าร่วม","Even though it's raining heavily, I still have to go to work because there's an important meeting I need to attend."
+"เมื่อวานฉันได้พบกับเพื่อนเก่าที่ไม่ได้เจอกันมานาน เราเลยนั่งคุยกันจนดึกดื่น","Yesterday I met an old friend whom I haven't seen in a long time, so we ended up chatting until late at night."
+"ถ้าคุณมีเวลาว่างสุดสัปดาห์นี้ เราไปเที่ยวภูเขาหรือทะเลกันดีไหม","If you have free time this weekend, should we go to the mountains or the sea?"
+```
+
+Format specifications:
+
+- CSV format with quotation marks around both Thai and English text
+- Each row contains one sentence pair
+- Sentences are 5-10 seconds in spoken length
+
 ### Setup for Generation
 
 1. Install required packages:
