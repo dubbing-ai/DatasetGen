@@ -24,7 +24,7 @@ Located in `generated/` directory:
 generated/
 ├── XX-YYY.csv        # From OpenAI O1
 ├── XX-YYY-claude.csv # From Anthropic Claude
-└── combined/         # Combined and processed datasets
+└── processed/        # Processed and combined datasets
     ├── combined_sentences_no_filter.csv      # All generated data combined
     ├── combined_sentences.csv                # Combined data excluding sentences with "ๆ ฯ"
     └── combined_sentences_with_phoneme.csv   # With Thai and English phonemes
@@ -58,7 +58,7 @@ Format specifications:
 
 ### Combined Datasets
 
-Located in `generated/combined/`:
+Located in `generated/processed/`:
 
 1. `combined_sentences_no_filter.csv`
    - Raw combination of all generated data
@@ -200,7 +200,7 @@ tsync2/
 ```plaintext
 .
 ├── generated/          # Generated Thai-English pairs
-│   └── combined/       # Combined and processed datasets
+│   └── processed/      # Processed and combined datasets
 ├── tsync2/             # Reference dataset for validation and future expansion
 │   ├── wrd_ph/         # Raw word-phoneme mappings
 │   └── processed/      # Processed and combined datasets
