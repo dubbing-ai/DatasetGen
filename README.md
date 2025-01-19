@@ -129,25 +129,58 @@ A comprehensive collection of Thai sentences that serves two purposes:
 1. **Current Use**: Reference dataset for validating phoneme coverage in our generated dataset
 2. **Future Plan**: Source material for expanding the parallel dataset with verified phoneme coverage
 
+### Processing and Output Files
+
+Located in `tsync2/processed/`, the processed dataset contains:
+
+1. `combined_tsync2_thai_sentences.csv`
+   - All Thai sentences from the Tsync2 dataset
+   - Single-column format with "thai sentence" header
+   - Contains 2,710 unique sentences
+   - Maintains original sentence integrity
+
+2. `combined_tsync2_thai_sentences_phoneme.csv`
+   - Thai sentences with phoneme mappings
+   - Two columns: "thai sentence" and "thai phoneme"
+   - Phonemes are space-separated with '_' denoting word boundaries
+   - Includes all sentences successfully converted to phonemes
+
+### Processing
+
+The dataset processing is handled by `tsync2.ipynb`, which performs:
+
+- File combination from all Tsync2 text sources
+- Thai text to phoneme conversion using the Transliterate module
+
 ### Structure
 
-Located in `tsync2/wrd_ph/` directory:
+The Tsync2 dataset is organized as follows:
 
 ```plaintext
 tsync2/
-└── wrd_ph/
-    ├── tsync2_noon_0_*.txt
-    ├── tsync2_noon_1_*.txt
-    └── ...
+├── wrd_ph/                   # Raw word-phoneme mapping files
+│   ├── tsync2_noon_0_*.txt
+│   ├── tsync2_noon_1_*.txt
+│   └── ...
+└── processed/               # Combined and processed datasets
+    ├── combined_tsync2_thai_sentences.csv         # All Thai sentences combined
+    └── combined_tsync2_thai_sentences_phoneme.csv # Sentences with phoneme mappings
 ```
 
-### File Format
+### File Formats
 
-- Naming pattern: `tsync2_noon_GROUP_ID.txt`
+#### Input Files
+
+- Raw files in `wrd_ph/` use Thai text with phoneme mappings
+- Naming convention: `tsync2_noon_GROUP_ID.txt`
   - GROUP: Phoneme group number (0-99)
   - ID: Unique identifier
-- Some files have multiple parts (indicated by `_1.txt`, `_2.txt`, etc.)
-- Contains Thai sentences with phoneme mappings
+- Multi-part files indicated by `_1.txt`, `_2.txt` suffixes
+
+#### Output Files
+
+- CSV format with appropriate headers
+- UTF-8 encoding for Thai character support
 
 ### Current Role
 
@@ -169,9 +202,11 @@ tsync2/
 ├── generated/          # Generated Thai-English pairs
 │   └── combined/       # Combined and processed datasets
 ├── tsync2/             # Reference dataset for validation and future expansion
-│   └── wrd_ph/         # Word-phoneme mappings
+│   ├── wrd_ph/         # Raw word-phoneme mappings
+│   └── processed/      # Processed and combined datasets
 ├── Transliterate/      # Phoneme generation module (submodule)
 ├── generator.ipynb     # Generation tool
 ├── combine_and_phonemize.ipynb  # Dataset processing tool
+├── tsync2.ipynb        # Tsync2 dataset processor
 └── README.md
 ```
