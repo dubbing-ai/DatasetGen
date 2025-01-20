@@ -195,18 +195,48 @@ tsync2/
 - Ensures comprehensive phoneme coverage
 - Will serve as verified, high-quality additions to the dataset
 
+## 3. Analysis Tools
+
+### Overview
+
+The repository includes analysis tools to examine and compare phoneme distributions between the generated dataset and Tsync2 reference dataset.
+
+### Analysis Features
+
+Located in `analysis/analyse_corpus.ipynb`, the analysis tools provide:
+
+- Phoneme distribution visualization and comparison between datasets
+- Identification of missing or unique phonemes
+- Visual representation through comparative plots
+- Validation of phoneme coverage completeness
+
+#### Output Files
+
+- `analysis/ThaiPhonemesDistribution.png` - Visual comparison of phoneme distributions
+
+#### Usage
+
+The notebook compares phoneme distributions between:
+
+- Generated dataset: `generated/processed/combined_sentences_with_phoneme.csv`
+- Reference dataset: `tsync2/processed/combined_tsync2_thai_sentences_phoneme.csv`
+
+The analysis helps validate phonemic coverage of the generated dataset against the reference Tsync2 corpus.
+
 ## Repository Structure
 
 ```plaintext
 .
-├── generated/          # Generated Thai-English pairs
-│   └── processed/      # Processed and combined datasets
-├── tsync2/             # Reference dataset for validation and future expansion
-│   ├── wrd_ph/         # Raw word-phoneme mappings
-│   └── processed/      # Processed and combined datasets
-├── Transliterate/      # Phoneme generation module (submodule)
-├── generator.ipynb     # Generation tool
+├── analysis/
+│   └── analyse_corpus.ipynb     # Analysis and visualization tools
+├── generated/                   # Generated Thai-English pairs
+│   └── processed/               # Processed and combined datasets
+├── tsync2/                      # Reference dataset for validation and future expansion
+│   ├── wrd_ph/                  # Raw word-phoneme mappings
+│   └── processed/               # Processed and combined datasets
+├── Transliterate/               # Phoneme generation module (submodule)
+├── generator.ipynb              # Generation tool
 ├── combine_and_phonemize.ipynb  # Dataset processing tool
-├── tsync2.ipynb        # Tsync2 dataset processor
+├── tsync2.ipynb                 # Tsync2 dataset processor
 └── README.md
 ```
