@@ -203,16 +203,18 @@ The repository includes analysis tools to examine and compare phoneme distributi
 
 ### Analysis Features
 
-Located in `analysis/analyse_corpus.ipynb`, the analysis tools provide:
+Located in `analysis`, the analysis tools provide:
 
-- Phoneme distribution visualization and comparison between datasets
+- Uni-phoneme, bi-phoneme, tri-phoneme distribution visualization and comparison between datasets
 - Identification of missing or unique phonemes
 - Visual representation through comparative plots
 - Validation of phoneme coverage completeness
 
 #### Output Files
 
-- `analysis/ThaiPhonemesDistribution.png` - Visual comparison of phoneme distributions
+- `analysis/ThaiPhonemesDistribution.png` - Visual comparison of uni-phoneme distributions
+- `analysis/ThaiBiPhonemesDistribution.png` - Visual comparison of bi-phoneme distributions
+- `analysis/ThaiTriPhonemesDistribution.png` - Visual comparison of tri-phoneme distributions
 
 #### Usage
 
