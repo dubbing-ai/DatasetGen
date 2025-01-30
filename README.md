@@ -12,9 +12,10 @@ A generated dataset of Thai-English sentence pairs created using Large Language 
 
 Located in `generator.ipynb`, the tool supports multiple LLMs:
 
-- OpenAI GPT-4
+- OpenAI GPT-4 or O1
 - Anthropic Claude
 - Ollama (local models)
+- Deepseek R1
 
 ### Generated Data
 
@@ -26,7 +27,7 @@ generated/
 ├── XX-YYY-claude.csv # From Anthropic Claude
 └── processed/        # Processed and combined datasets
     ├── combined_sentences_no_filter.csv      # All generated data combined
-    ├── combined_sentences.csv                # Combined data excluding sentences with "ๆ ฯ"
+    ├── combined_sentences.csv                # Combined data excluding sentences with "ๆ ฯ 0-9 a-z A-Z"
     └── combined_sentences_with_phoneme.csv   # With Thai and English phonemes
 ```
 
@@ -65,13 +66,32 @@ Located in `generated/processed/`:
    - Includes all sentences without filtering
 
 2. `combined_sentences.csv`
-   - Filtered version excluding sentences containing "ๆ" and "ฯ"
+   - Filtered version excluding sentences containing "ๆ", "ฯ", numbers, and English alphabet
    - These characters are excluded due to complexity in Thai pronunciation handling
 
 3. `combined_sentences_with_phoneme.csv`
    - Based on filtered dataset
    - Includes generated phonemes for both Thai and English sentences
    - Four columns: Thai sentence, English sentence, Thai phonemes, English phonemes
+
+### Reviewed Datasets
+
+Located in `generated/reviewed/`, the reviewed datasets contain manually corrected sentences:
+
+1. `combined_sentences_reviewed.csv`
+   - First step of the review process based on `combined_sentences_no_filter.csv`
+   - Rough review focusing on removing sentences that are:
+     - Weird or inappropriate
+     - Out of context
+     - Not meaningful
+   - No editing or modifications made - only removal of problematic sentences
+
+2. `combined_sentences_revised.csv`
+   - Second step of the review process based on `combined_sentences_reviewed.csv`
+   - Enhanced review including:
+     - Removal of similar sentences using cosine similarity
+     - Manual grammar corrections
+     - Manual translation corrections
 
 ### Transliterate Module
 
@@ -232,7 +252,8 @@ The analysis helps validate phonemic coverage of the generated dataset against t
 ├── analysis/
 │   └── analyse_corpus.ipynb     # Analysis and visualization tools
 ├── generated/                   # Generated Thai-English pairs
-│   └── processed/               # Processed and combined datasets
+│   ├── processed/               # Processed and combined datasets
+│   └── reviewed/                # Reviewed and corrected datasets
 ├── tsync2/                      # Reference dataset for validation and future expansion
 │   ├── wrd_ph/                  # Raw word-phoneme mappings
 │   └── processed/               # Processed and combined datasets
