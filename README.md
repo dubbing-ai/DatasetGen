@@ -93,32 +93,46 @@ Located in `generated/reviewed/`, the reviewed datasets contain manually correct
      - Manual grammar corrections
      - Manual translation corrections
 
+### Sentence Similarity Analysis
+
+Located in `sentence_sim_analysis/`, this component provides tools for analyzing semantic similarity between sentences:
+
+1. `cosine_sim_gen.ipynb`
+   - Generates sentence embeddings using BGE-M3 model
+   - Creates histogram plots of similarity distribution
+   - Helps identify duplicate or very similar sentences
+
+2. `cosine_sim_search.ipynb`
+   - Searches for similar sentences based on text and cosine similarity threshold
+   - Outputs similar sentence pairs for manual review
+
+The analysis uses the BGE-M3 model for generating sentence embeddings and calculates cosine similarity between them. This helps in:
+
+- Identifying and removing duplicate content
+- Finding semantically similar sentences
+- Quality control of the dataset
+- Ensuring diverse sentence coverage
+
 ### Transliterate Module
 
-The [Transliterate](https://github.com/dubbing-ai/Transliterate) module is included as a Git submodule for phoneme generation:
+The [Transliterate](https://github.com/dubbing-ai/Transliterate) module is for phoneme generation:
 
 - Converts Thai and English text to phoneme representations
 - Handles complex Thai language rules
-- Integrated directly into the repository
 
 ### Setup for Generation
 
-1. Clone the repository with submodules:
+1. Clone the repository:
 
    ```bash
-   git clone --recursive https://github.com/dubbing-ai/DatasetGen
-   ```
-
-   Or if already cloned:
-
-   ```bash
-   git submodule update --init --recursive
+   git clone https://github.com/dubbing-ai/DatasetGen
    ```
 
 2. Install required packages:
 
    ```bash
    pip install openai anthropic python-dotenv requests jupyter
+   pip install git+https://github.com/dubbing-ai/Transliterate.git
    ```
 
 3. Configure API keys in `.env`:
@@ -254,6 +268,11 @@ The analysis helps validate phonemic coverage of the generated dataset against t
 ├── generated/                   # Generated Thai-English pairs
 │   ├── processed/               # Processed and combined datasets
 │   └── reviewed/                # Reviewed and corrected datasets
+├── sentence_sim_analysis/       # Semantic similarity analysis tools
+│   ├── cosine_sim_gen.ipynb     # Embedding generation and visualization
+│   ├── cosine_sim_search.ipynb  # Similar sentence search tool
+│   ├── encoder/                 # Encoder model for sentence embeddings
+│   └── results/                 # Analysis results and plots
 ├── tsync2/                      # Reference dataset for validation and future expansion
 │   ├── wrd_ph/                  # Raw word-phoneme mappings
 │   └── processed/               # Processed and combined datasets
