@@ -276,7 +276,6 @@ The analysis helps validate phonemic coverage of the generated dataset against t
 ├── tsync2/                      # Reference dataset for validation and future expansion
 │   ├── wrd_ph/                  # Raw word-phoneme mappings
 │   └── processed/               # Processed and combined datasets
-├── Transliterate/               # Phoneme generation module (submodule)
 ├── generator.ipynb              # Generation tool
 ├── combine_and_phonemize.ipynb  # Dataset processing tool
 ├── tsync2.ipynb                 # Tsync2 dataset processor
